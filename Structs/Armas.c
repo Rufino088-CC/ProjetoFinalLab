@@ -59,3 +59,31 @@ Armas ganhou_arma(){
 
     return arma;
 }
+
+
+Armas trocar_arma(Armas arma_em_uso, Armas arma_ganha){
+    printf("Sua arma em uso e: %s\nDano de: %.2f\nEla e uma arma %s", arma_em_uso.nome, arma_em_uso.dano, arma_em_uso.raridade);
+    printf("Voce acabou de ganhar: %s\nDano de: %.2f\nEla e uma arma %s.", arma_ganha.nome, arma_ganha.dano, arma_ganha.raridade);
+
+    //Laço de repeticao para saber se a pessoa quer trocar de arma
+    char resposta = 'a';
+    while(toupper(resposta) != 'S' && toupper(resposta) != 'N'){
+
+        printf("Voce deseja trocar de arma?\n");
+        scanf(" %c", &resposta);
+
+        if(toupper(resposta) == 'S'){
+            arma_em_uso = arma_ganha;
+            return arma_em_uso;
+        }
+        else if(toupper(resposta) == 'N'){
+            printf("A arma que voce ganhou foi descartada, pois nao pode ser guardada! ");
+            return arma_em_uso;
+        }
+        else{
+            printf("Responda com S ou N! ");
+        }
+    }
+
+    return arma_em_uso;
+}

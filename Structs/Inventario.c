@@ -5,7 +5,7 @@
 #include <pocao.c>
 
 typedef struct{
-    int aura;
+    int ouro;
     Armas *arma;
     Pocao *pocoes;
 }Inventario;
