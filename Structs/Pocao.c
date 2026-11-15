@@ -11,7 +11,7 @@ typedef struct{
 Pocao ganhou_pocao(){
     Pocao pocao;
 
-    pocao.cura = (rand() % 6) + 1;
+    pocao.cura = (rand() % 5) + 2;
     pocao.quantidade = (rand() % 3) + 1;
 
     return pocao;
