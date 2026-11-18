@@ -59,7 +59,7 @@ int mapa[ALTURA][LARGURA];
 int px, py;
 int fase = 0;
 Personagem heroina = {
-    .vida = ,
+    .vida = 50,
     .nome = "Nidhild",
     .itens = NULL
 };

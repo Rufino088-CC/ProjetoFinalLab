@@ -8,3 +8,4 @@ typedef struct{
     char nome[7];
     Inventario *itens;
 }Personagem;
+
