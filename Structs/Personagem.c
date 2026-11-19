@@ -5,6 +5,7 @@
 
 typedef struct{
     float vida;
+    float vida_max;
     char nome[7];
     Inventario *itens;
 }Personagem;

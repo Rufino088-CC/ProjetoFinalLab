@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
-#include <ctype.h>
 #include <conio.h>
+#include "inventario.c"
 #include "Personagem.c"
+#include "loja.h"
+#include "loja.c"
 
 #define LARGURA 10
 #define ALTURA 10
@@ -59,7 +60,8 @@ int mapa[ALTURA][LARGURA];
 int px, py;
 int fase = 0;
 Personagem heroina = {
-    .vida = 50,
+    .vida = 100,
+    .vida_max = 100,
     .nome = "Nidhild",
     .itens = NULL
 };
@@ -87,20 +89,23 @@ void desenhar(void) {
 }
 /*OBS: não sei se essa função deve ser aqui que pode usar em outros codigos*/
 void pausar(){
-    printf("\nPressione qualquer tecla para continuar...")
+    printf("\nPressione qualquer tecla para continuar...");
     getch();
 }
 
 int interagir(int celula) {
     if (celula == 2) {
-      /*Falta a função do bau de carlim*/
+        int tipo = sorteio();
+        atualizar_inventario(heroina.itens, tipo);
+        mapa[py][px] = 0;
+        pausar();
     }else if (celula == 3) {
-        if(combate(p, fase)){
+        if(combate(heroina, fase)){
             mapa[py][px] = 0;
         }
         pausar(); 
     }else if(celula == 5){
-
+        abrir_loja(heroina, fase)
     }else if (celula == 4) {
         if (fase == NUM_FASES - 1) {
             return 1;                          // passou da ultima fase

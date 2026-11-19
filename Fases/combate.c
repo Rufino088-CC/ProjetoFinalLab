@@ -34,13 +34,20 @@ int combate(Personagem *p, int fases){
             // Na main é pra ter um Define VIDA_MAX pra dizer a vida maxima que o personagem vai ter
         } else if (tecla == 'c') {
             if (qtd_pocoes > 0) {
-                p->vida += p->itens->pocoes->cura;
-                if (p->vida > VIDA_MAX) p->vida = VIDA_MAX;
-                printf("Voce usou uma pocao! +%.0f de vida.\n", p->itens->pocoes->cura);
-                p->itens->pocoes->quantidade--;
-                if (p->itens->pocoes->quantidade <= 0) {   // acabou: libera a memoria
-                    free(p->itens->pocoes);
-                    p->itens->pocoes = NULL;
+                float falta = p->vida_max - p->vida;
+                if (falta <= 0){
+                    printf("Sua vida ja esta cheia")
+                } else{
+                    float cura = p->itens->pocoes->cura;
+                    if (cura > falta) cura = falta;
+                    p->vida += cura;
+                    printf("Voce usou uma pocao! +%.0f de vida. \n");
+
+                    p->itens->pocoes->quantidade--;
+                    if(p->itens->pocoes->quantidade <= 0){
+                        free(p->itens->pocoes);
+                        p->itens->pocoes = NULL;
+                    }
                 }
             } else {
                 printf("Voce nao tem pocoes! Perdeu o turno.\n");
