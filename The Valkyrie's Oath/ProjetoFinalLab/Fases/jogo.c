@@ -7,6 +7,7 @@
 #include "loja.h"
 #include "inventario.h"
 #include "util.h"
+#include "historia.h"
 
 // Codigos das celulas:
 // 0 chao, 1 parede, 2 bau, 3 inimigo, 4 saida, 5 loja
@@ -134,7 +135,7 @@ static int interagir(Personagem *p, EstadoJogo *e, int celula) {
             return 1;                          // passou da ultima fase
         }
         carregar_fase(e, e->fase + 1);
-        printf("\nVoce avancou para a fase %d!\n", e->fase + 1);
+        historia_fase(e->fase);                // texto do novo reino
         salvar_jogo(p, e, ARQUIVO_SAVE);       // salva sozinho a cada fase nova
         pausar();
     }
@@ -175,14 +176,14 @@ void jogar(Personagem *p, EstadoJogo *e) {
 
         if (resultado == 1) {
             limpar_tela();
-            printf("\n*** PARABENS, %s! Voce zerou o jogo! ***\n", p->nome);
+            historia_vitoria(p->nome);
             printf("Ouro final: %d\n", p->itens->ouro);
             remove(ARQUIVO_SAVE);               // jogo terminado: apaga o save
             pausar();
             return;
         }
         if (resultado == 2) {
-            printf("\n*** Voce morreu... FIM DE JOGO ***\n");
+            historia_derrota(p->nome);
             printf("(Use \"Continuar\" para voltar ao ultimo save.)\n");
             pausar();
             return;

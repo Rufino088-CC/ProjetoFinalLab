@@ -17,7 +17,7 @@ Armas ganhou_arma(void){
     //Se raridade for comum, vai sortear o nome de uma arma comum, e declarar seu dano de 2-6
     if (strcmp(arma.raridade, "Comum") == 0){
         char nome_comum [8][20] = {
-        "Maca de Pedra", "Espada de Metal", "Marreta de Ouro", "Foice de Ferro", "Machado de Metal", "Adaga Metalica", "Bastao de Ferro","Luvas de aco"
+            "Ulfberht", "Seax", "Sax", "Skeggox", "Spjot", "Atgeir", "Hoggspjot", "Langsax"
         };
 
         int sorteio_nome = rand() % 8;
@@ -29,7 +29,7 @@ Armas ganhou_arma(void){
     //Se raridade for incomum, vai sortear uma arma e declarar seu dano de 7-9
     else if (strcmp(arma.raridade, "Incomum") == 0){
         char nome_incomum [8][30] = {
-        "Maca em chamas", "Espada Congelada", "Marreta Sonica", "Foice Envenenada", "Machado Eletrico", "Adaga Dupla", "Bastao Magico","Luvas de Aco Cortante"
+            "Tyrfing", "Skofnung", "Dainsleif", "Gram", "Mistilteinn", "Hrunting", "Hofund", "Aettartangi"
         };
 
         int sorteio_nome = rand() % 8;
@@ -41,7 +41,7 @@ Armas ganhou_arma(void){
     //Se raridade for epica, vai sortear uma arma e declarar seu dano de 10-12
     else{
         char nome_epico [6][30] = {
-        "Trident de Posseidom", "Espada de Guerra", "Foice de Cronos e Perceu", "Foice de Hades", "Machado De Thor", "Clava de Hercules"
+            "Mjolnir", "Gungnir", "Gleipnir", "Laevateinn", "Sumarbrander", "Hofud de Heimdall"
         };
 
         int sorteio_nome = rand() % 6;

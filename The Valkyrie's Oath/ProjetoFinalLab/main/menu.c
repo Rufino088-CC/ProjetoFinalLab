@@ -3,6 +3,7 @@
 #include <string.h>
 #include "menu.h"
 #include "loja.h"
+#include "historia.h"
 
 #define MAGIC 0x52504731  /* identifica que o arquivo e um save valido */
 #define VERSAO_SAVE 2
@@ -35,13 +36,7 @@ static void ler_texto(char *dest, int tamanho){
 /* ---------- telas ---------- */
 
 void mostrar_titulo(void){
-    printf("\n");
-    printf("  ========================================\n");
-    printf("  |                                      |\n");
-    printf("  |        A V E N T U R A   E M  C      |\n");
-    printf("  |         ~ Um RPG no terminal ~       |\n");
-    printf("  |                                      |\n");
-    printf("  ========================================\n\n");
+    historia_titulo();
 }
 
 void mostrar_instrucoes(void){
@@ -99,6 +94,8 @@ Personagem *novo_jogo(EstadoJogo *e){
     printf("Seu nome ficou: %s (maximo de %d letras)\n",
            p->nome, (int)sizeof(p->nome) - 1);
     printf("\nBem-vindo, %s! Sua aventura comeca agora...\n\n", p->nome);
+    historia_intro(p->nome);
+    historia_fase(0);
     return p;
 }
 
